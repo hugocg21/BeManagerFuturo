@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:title="Jugadores"
+        android:icon="@drawable/icono_jugadores"/>
+
+    <item
+        android:id="@+id/shorts"
+        android:title="Partidos"
+        android:icon="@drawable/icono_partidos"
+        />
+
+    <item
+        android:title=""/>
+
+    <item
+        android:id="@+id/subscriptions"
+        android:title="Entrenamientos"
+        android:icon="@drawable/icono_entrenamiento" />
+    <item
+        android:id="@+id/library"
+        android:title="Estadísticas"
+        android:icon="@drawable/icono_estadisticas" />
+
+</menu>

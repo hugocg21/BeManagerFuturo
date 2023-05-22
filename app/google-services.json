@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "620402922599",
+    "project_id": "bemanager-hugocg21",
+    "storage_bucket": "bemanager-hugocg21.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:620402922599:android:e0aa8b4a50cde1846670c2",
+        "android_client_info": {
+          "package_name": "com.hugocg21.bemanager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "620402922599-i2khvdj62d4036m0jrantvbl5cjtbv4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSK8TJd0seAun8T9o28YX1fJmbR4y1Xg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "620402922599-i2khvdj62d4036m0jrantvbl5cjtbv4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
