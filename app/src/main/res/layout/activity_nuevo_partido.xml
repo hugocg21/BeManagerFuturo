@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_pizarra_canasta"
+    tools:context=".Menus.Jugadores.NuevoJugador">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayoutContainerNuevoJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardViewNuevoJugador"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayoutContainerNuevoPartido"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/custom_linear_layout_redondeado"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/textViewPartidoNuevo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:text="Partido nuevo"
+                    android:textColor="@color/azul"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/constraintLayoutContainerNuevoPartido" />
+
+                <EditText
+                    android:id="@+id/editTextRivalPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/custom_edit_text_redondeado"
+                    android:hint="Equipo contrario"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/azul"
+                    android:textColorHint="@color/azul"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewPartidoNuevo" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupLocalVisitante"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextRivalPartido">
+
+                    <RadioButton
+                        android:id="@+id/radiobuttonLocalPartido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Local" />
+
+                    <RadioButton
+                        android:id="@+id/radiobuttonVisitantePartido"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Visitante" />
+
+                </RadioGroup>
+
+                <EditText
+                    android:id="@+id/editTextPabellonPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/custom_edit_text_redondeado"
+                    android:hint="Pabellón del partido"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/azul"
+                    android:textColorHint="@color/azul"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/radioGroupLocalVisitante" />
+
+                <EditText
+                    android:id="@+id/editTextFechaPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/custom_edit_text_redondeado"
+                    android:editable="false"
+                    android:hint="Fecha del partido"
+                    android:onClick="abrirCalendarioFecha"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/azul"
+                    android:textColorHint="@color/azul"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextPabellonPartido"
+                    tools:layout_editor_absoluteY="262dp" />
+
+                <EditText
+                    android:id="@+id/editTextHoraPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/custom_edit_text_redondeado"
+                    android:editable="false"
+                    android:hint="Hora del partido"
+                    android:onClick="abrirCalendarioHora"
+                    android:paddingLeft="20dp"
+                    android:textColor="@color/azul"
+                    android:textColorHint="@color/azul"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextFechaPartido" />
+
+                <Button
+                    android:id="@+id/buttonAnadirNuevoPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/custom_button_rounded"
+                    android:onClick="crearPartido"
+                    android:text="Crear partido"
+                    android:textColor="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editTextHoraPartido" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menus.JugadoresFragment">
+    android:orientation="vertical"
+    tools:context=".Menus.Jugadores.JugadoresFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textViewJugadoresFragmentJugadores"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Jugadores"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:gravity="center"
-        android:textSize="40sp"
-        android:textColor="@color/azul" />
+        android:text="Jugadores del equipo"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewJugadoresFragmentJugadores"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="15" />
+</LinearLayout>

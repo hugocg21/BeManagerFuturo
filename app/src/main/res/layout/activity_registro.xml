@@ -34,7 +34,7 @@
                 android:padding="24dp">
 
                 <TextView
-                    android:id="@+id/textViewCrearCuenta"
+                    android:id="@+id/textViewCrearCuentaRegistro"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -68,7 +68,7 @@
                     android:textColorHint="@color/azul"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewCrearCuenta" />
+                    app:layout_constraintTop_toBottomOf="@+id/textViewCrearCuentaRegistro" />
 
                 <EditText
                     android:id="@+id/editTextUsuarioRegistro"

@@ -2,7 +2,6 @@ package com.hugocg21.bemanager.Menus;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,80 +27,102 @@ import java.util.Map;
 import java.util.Objects;
 
 public class NuevoEquipo extends AppCompatActivity {
-    Button button_nuevoEquipo;
-    EditText editText_nombreEquipo, editText_sedeEquipo;
-    Spinner spinner_categoriaEquipo;
-    FirebaseFirestore database;
-    FirebaseAuth auth;
-    FirebaseUser usuario;
-    CollectionReference collectionReference_equipos, collectionReference_usuario;
+    Button button_nuevoEquipo; //Creamos el Button de añadir un nuevo equipo
+    EditText editText_nombreEquipo, editText_sedeEquipo; //Creamos los EditTexts del nombre y sede del equipo
+    Spinner spinner_categoriaEquipo; //Creamos el Spinner para la categoría del equipo
+    FirebaseFirestore database; //Creamos el objeto de la base de datos
+    FirebaseAuth auth; //Creamos el objeto de la autenticación de usuario
+    FirebaseUser usuarioLogueado; //Creamos el objeto de usuario
+    CollectionReference collectionReference_equipos, collectionReference_usuario; //Creamos las referencias a las colecciones de equipos y usuario
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_equipo);
 
+        //Inicializamos los EditTexts
         editText_nombreEquipo = findViewById(R.id.editTextNombreNuevoEquipo);
         editText_sedeEquipo = findViewById(R.id.editTextSedeNuevoEquipo);
 
+        //Inicializamos el Spinner
         spinner_categoriaEquipo = findViewById(R.id.spinnerCategoriaNuevoEquipo);
 
+        //Llamamos al método para rellenar el Spinner
         rellenarSpinner();
 
+        //Inicializamos el Button
         button_nuevoEquipo = findViewById(R.id.buttonAnadirNuevoEquipo);
 
-        auth = FirebaseAuth.getInstance();
+        //Obtenemos la instancia de la base de datos y de la autenticación de Firebase
         database = FirebaseFirestore.getInstance();
+        auth = FirebaseAuth.getInstance();
 
-        usuario = auth.getCurrentUser();
-        String correo = Objects.requireNonNull(usuario).getEmail();
+        //Creamos un String y le asignamos el correo del usuario logueado actual obtenido
+        usuarioLogueado = auth.getCurrentUser();
+        String correo = Objects.requireNonNull(usuarioLogueado).getEmail();
 
-        Log.e("Usuario", correo);
-
+        //Inicializamos las referencias a las colecciones
         collectionReference_usuario = database.collection("Usuarios");
         collectionReference_equipos = collectionReference_usuario.document(Objects.requireNonNull(correo)).collection("Equipos");
 
+        //Método al hacer click en el Button de añadir un nuevo equipo
         button_nuevoEquipo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Creamos los String de los datos del equipo(nombre, sede y categoría) y los guardamos
                 String nombreEquipo = editText_nombreEquipo.getText().toString().trim();
                 String sedeEquipo = editText_sedeEquipo.getText().toString().trim();
                 String categoriaEquipo = spinner_categoriaEquipo.getSelectedItem().toString().trim();
 
-
-                if(nombreEquipo.isEmpty() && categoriaEquipo.isEmpty() && sedeEquipo.isEmpty()){
-                    Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
-                } else{
+                //Si algún campo está vacio, entramos el if
+                if (nombreEquipo.isEmpty() || categoriaEquipo.isEmpty() || sedeEquipo.isEmpty()) {
+                    //Creamos y mostramos un mensaje emergente informando que hay que rellenar todos los campos
+                    Toast.makeText(getApplicationContext(), "Ingresar todos los datos", Toast.LENGTH_SHORT).show();
+                } else {
+                    //Si todos los campos están rellenados correctamente, llamamos el método para crear un equipo
                     crearEquipo(nombreEquipo, categoriaEquipo, sedeEquipo, 0);
+
+                    //Creamos un Intent y comenzamos la actividad del Dashboard
                     startActivity(new Intent(getApplicationContext(), Dashboard.class));
                 }
             }
         });
     }
 
-    private void crearEquipo(String nombreEquipo, String categoriaEquipo, String sedeEquipo, int numJugadoresEquipo){
+    //Método para crear un equipo y añadirlo a la base de datos
+    private void crearEquipo(String nombreEquipo, String categoriaEquipo, String sedeEquipo, int numJugadoresEquipo) {
+        //Creamos un HashMap para guardar los datos del equipo
         Map<String, Object> equipo = new HashMap<>();
         equipo.put("nombreEquipo", nombreEquipo);
         equipo.put("categoriaEquipo", categoriaEquipo);
         equipo.put("sedeEquipo", sedeEquipo);
         equipo.put("numJugadores", numJugadoresEquipo);
 
+        //Recogemos la referencia a la colección de los equipos y no hay problemas, entra aquí
         collectionReference_equipos.document(nombreEquipo).set(equipo).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(getApplicationContext(), "Creado exitosamente", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getApplicationContext(), "Error al ingresar", Toast.LENGTH_SHORT).show();
-            }
-        });
+                    @Override
+                    public void onSuccess(Void unused) {
+                        //Creamos y mostramos un mensaje emergente informando que se ha creado y añadido el equipo correctamente
+                        Toast.makeText(getApplicationContext(), "Creado exitosamente", Toast.LENGTH_SHORT).show();
+
+                        //Finalizamos la actividad
+                        finish();
+                    }
+                })
+                //Si hay problemas, entramos aquí
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //Creamos y mostramos un mensaje emergente indicando que ha habido un error al crear el equio
+                        Toast.makeText(getApplicationContext(), "Error al ingresar", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
 
+    //Método para rellenar el Spinner de las categorías del equipo
     private void rellenarSpinner() {
+        //Creamos un ArrayList para almacenar todas las categorías
         ArrayList<String> categorias = new ArrayList<String>();
         categorias.add("Categoría del equipo");
         categorias.add("Cto. España 1ª División Mas (Competiciones federadas)");
@@ -134,10 +155,13 @@ public class NuevoEquipo extends AppCompatActivity {
         categorias.add("Benjamín Mas (Juegos deportivos)");
         categorias.add("Benjamín Fem (Juegos deportivos)");
 
+        //Creamos el adaptador
         ArrayAdapter<String> adapterCategorias = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, categorias);
 
+        //Modificamos como se muestra al desplegarse
         adapterCategorias.setDropDownViewResource(R.layout.custom_spinner_lista);
 
+        //Asignamos el adaptador al Spinner
         spinner_categoriaEquipo.setAdapter(adapterCategorias);
     }
 }

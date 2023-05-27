@@ -1,79 +1,50 @@
 package com.hugocg21.bemanager.Adaptadores;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.annotation.Nullable;
 
 import com.hugocg21.bemanager.Clases.Equipo;
-import com.hugocg21.bemanager.Menus.EquipoDashboard;
 import com.hugocg21.bemanager.R;
 
 import java.util.List;
 
-public class AdaptadorEquipos extends RecyclerView.Adapter<AdaptadorEquipos.ViewHolder>{
-    private List<Equipo> listaEquipos;
-    private Context context;
+public class AdaptadorEquipos extends ArrayAdapter<Equipo> {
+    private Context context; //Recogemos el contexto desde el que se llama a la clase
+    private int idGridView; //Variable que recoge el id del item del GridView
+    private List<Equipo> listaEquipos; //Lista de tipo Equipo que guarda los equipos del usuario
 
-    public AdaptadorEquipos(List<Equipo> listaEquipos, Context context) {
-        this.listaEquipos = listaEquipos;
+    //Constructor de la clase que recibe los atributos anteriores
+    public AdaptadorEquipos(Context context, int idGridView, List<Equipo> listaEquipos) {
+        super(context, idGridView, listaEquipos);
         this.context = context;
+        this.idGridView = idGridView;
+        this.listaEquipos = listaEquipos;
     }
 
+    //Método que obtiene la vista que representa un elemento de la lista
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_equipo, parent, false);
-        return new ViewHolder(view);
-    }
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+        View view = convertView; //Variable que recibe el contexto de la vista
 
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Equipo equipo = listaEquipos.get(position);
-        holder.textView_nombreEquipo.setText(equipo.getNombreEquipo());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(context, EquipoDashboard.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(i);
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return listaEquipos.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder/* implements View.OnClickListener*/{
-        TextView textView_nombreEquipo;
-        ImageView imageView_logo;
-
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
-            textView_nombreEquipo = itemView.findViewById(R.id.textViewNombreEquipo);
-            imageView_logo = itemView.findViewById(R.id.imageViewEquipo);
+        //Si la variable es null
+        if (view == null) {
+            //Inflamos el diseño del XML a una vista en pantalla
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(idGridView, parent, false);
         }
 
-        /*@Override
-        public void onClick(View v) {
-            int position = getAdapterPosition();
-            if (position != RecyclerView.NO_POSITION) {
-                Equipo equipo = listaEquipos.get(position);
-                listener.onItemClick(equipo);
-            }
-        }*/
-    }
+        Equipo equipo = listaEquipos.get(position); //Creamos un objeto de tipo Equipo y guardamos un equipo de la lista de equipos, dependiendo de la posicion
+        TextView textView_nombreEquipo = view.findViewById(R.id.teamNameTextView); //Recogemos la referencia del TextView de la vista
+        textView_nombreEquipo.setText(equipo.getNombreEquipo()); //Asigamos a ese TextView el nombre del equipo
 
-    public interface OnItemClickListener {
-        void onItemClick(Equipo equipo);
+        return view; //Devolvemos la vista
     }
 }

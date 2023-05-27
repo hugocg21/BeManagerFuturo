@@ -1,11 +1,8 @@
 package com.hugocg21.bemanager.Menus;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -17,102 +14,140 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.hugocg21.bemanager.Menus.Entrenamientos.EntrenamientosFragment;
+import com.hugocg21.bemanager.Menus.Estadisticas.EstadisticasFragment;
+import com.hugocg21.bemanager.Menus.Jugadores.JugadoresFragment;
+import com.hugocg21.bemanager.Menus.Jugadores.NuevoJugador;
+import com.hugocg21.bemanager.Menus.Partidos.PartidosFragment;
 import com.hugocg21.bemanager.R;
 import com.hugocg21.bemanager.databinding.ActivityEquipoDashboardBinding;
 
 public class EquipoDashboard extends AppCompatActivity {
-
-    ActivityEquipoDashboardBinding binding;
+    ActivityEquipoDashboardBinding binding; //Creamos una variable binding para poder bindear los datos
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Bindeamos todos los datos y lo inflamos
         binding = ActivityEquipoDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new JugadoresFragment());
+        cambiarFragment(new JugadoresFragment());
 
-        binding.bottomNavigationView.setBackground(null);
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.home) {
-                replaceFragment(new JugadoresFragment());
-            } else if (item.getItemId() == R.id.shorts) {
-                replaceFragment(new PartidosFragment());
-            } else if (item.getItemId() == R.id.subscriptions) {
-                replaceFragment(new EntrenamientosFragment());
-            } else if (item.getItemId() == R.id.library) {
-                replaceFragment(new EstadisticasFragment());
+        //Bindeamos el BottomNavigationView
+        binding.bottomNavigationViewEquipoDasboard.setBackground(null);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("datos", MODE_PRIVATE);
+        String equipo = sharedPreferences.getString("nombreEquipo", null);
+
+        // Crea el Bundle con el nombre del equipo
+        Bundle bundle = new Bundle();
+        bundle.putString("nombreEquipo", equipo);
+
+        //Método para abrir cada Fragment dependiendo de que item del menú se clickee
+        binding.bottomNavigationViewEquipoDasboard.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.bottomMenuJugadores) {
+                JugadoresFragment jugadoresFragment = new JugadoresFragment(); //Creamos un objeto de tipo JugadoresFragment
+                jugadoresFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
+                cambiarFragment(jugadoresFragment); //Cambiamos el Fragment al de la lista de jugadores
+            } else if (item.getItemId() == R.id.bottomMenuPartidos) {
+                PartidosFragment partidosFragment = new PartidosFragment(); //Creamos un objeto de tipo PartidosFragment
+                partidosFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
+                cambiarFragment(partidosFragment); //Cambiamos el Fragment al de la lista de partidos
+            } else if (item.getItemId() == R.id.bottomMenuEntrenamientos) {
+                EntrenamientosFragment entrenamientosFragment = new EntrenamientosFragment(); //Creamos un objeto de tipo EntrenamientosFragment
+                entrenamientosFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
+                cambiarFragment(entrenamientosFragment); //Cambiamos el Fragment al de la lista de entrenamientos
+            } else if (item.getItemId() == R.id.bottomMenuEstadisticas) {
+                EstadisticasFragment estadisticasFragment = new EstadisticasFragment(); //Creamos un objeto de tipo EstadisticasFragment
+                estadisticasFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
+                cambiarFragment(estadisticasFragment); //Cambiamos el Fragment al de las estadísticas
             }
             return true;
         });
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
+        //Método al hacer click en el Button de añadir del BottomNavigationView
+        binding.floatingActionButtonDesplegableEquipoDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showBottomDialog();
+                showBottomDialog(); //Llamammos al método para mostrar el Dialog desplegable inferior
             }
         });
 
     }
-    private  void replaceFragment(Fragment fragment) {
+
+    //Método para cambiar los Fragments de la actividad
+    private void cambiarFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frame_layout, fragment);
+        fragmentTransaction.replace(R.id.frameLayoutEquipoDashboard, fragment);
         fragmentTransaction.commit();
     }
 
+    //Método para mostrar
     private void showBottomDialog() {
-
+        //Creamos un objeto de tipo Dialog y lo adaptamos a la View
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.bottomsheetlayout);
+        dialog.setContentView(R.layout.bottom_sheet_layout);
 
-        LinearLayout videoLayout = dialog.findViewById(R.id.layoutVideo);
-        LinearLayout shortsLayout = dialog.findViewById(R.id.layoutShorts);
-        LinearLayout liveLayout = dialog.findViewById(R.id.layoutLive);
-        ImageView cancelButton = dialog.findViewById(R.id.cancelButton);
+        //Creamos los LinearLayout y el ImageView del Dialog, y los asignamos, que funcionan a modo de Buttons
+        LinearLayout nuevoJugador = dialog.findViewById(R.id.linearLayoutNuevoJugadorDesplegable);
+        LinearLayout nuevoPartido = dialog.findViewById(R.id.linearLayoutNuevoPartidoDesplegable);
+        LinearLayout nuevoEntrenamiento = dialog.findViewById(R.id.linearLayoutNuevoEntrenaminetoDesplegable);
+        ImageView cerrarDialog = dialog.findViewById(R.id.imageViewCerrarDesplegable);
 
-        videoLayout.setOnClickListener(new View.OnClickListener() {
+        //Método al hacer click en el LinearLayout de crear un nuevo jugador
+        nuevoJugador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NuevoJugador.class)); //Creamos un Intent y abrimos la actividad de crear un nuevo jugador
+                dialog.dismiss(); //Cerramos el Dialog del menú inferior
+            }
+        });
+
+        //Método al hacer click en el LinearLayout de crear un nuevo partido
+        nuevoPartido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(),"Upload a Video is clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Create a short is Clicked", Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        shortsLayout.setOnClickListener(new View.OnClickListener() {
+        //Método al hacer click en el LinearLayout de crear un nuevo entrenamiento
+        nuevoEntrenamiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(),"Create a short is Clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Go live is Clicked", Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        liveLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                dialog.dismiss();
-                Toast.makeText(getApplicationContext(),"Go live is Clicked",Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-        cancelButton.setOnClickListener(new View.OnClickListener() {
+        //Método al hacer click en el ImageView de cerrar el Dialog
+        cerrarDialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Cerramos el Dialog
                 dialog.dismiss();
             }
         });
 
+        //Mostramos el Dialog en pantalla y lo modificamos a nuestro gusto
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-        dialog.getWindow().setGravity(Gravity.BOTTOM);
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT); //Le ajustamos las dimensiones
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT)); //Le cambiamos el color de fondo
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation; //Le aplicamos las animaciones
+        dialog.getWindow().setGravity(Gravity.BOTTOM); //Lo iniciamos en la parte inferior de la pantalla
 
     }
 }

@@ -44,7 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="2dp"
-                android:gravity="left|center"
+                android:gravity="center_horizontal"
                 android:text="Nombre Equipo"
                 android:textColor="@color/white"
                 android:textSize="24sp"

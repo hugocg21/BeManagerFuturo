@@ -18,10 +18,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textViewCorreo"/>
+        app:layout_constraintBottom_toTopOf="@id/textViewCorreoHeader"/>
 
     <TextView
-        android:id="@+id/textViewCorreo"
+        android:id="@+id/textViewCorreoHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="androidstudio@android.com"
@@ -30,16 +30,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header_image"
-        app:layout_constraintBottom_toTopOf="@id/textViewUsuario"/>
+        app:layout_constraintBottom_toTopOf="@id/textViewUsuarioHeader"/>
 
     <TextView
-        android:id="@+id/textViewUsuario"
+        android:id="@+id/textViewUsuarioHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textViewCorreo"
+        app:layout_constraintTop_toBottomOf="@id/textViewCorreoHeader"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textColor="@color/white"
         android:text="Android Studio" />

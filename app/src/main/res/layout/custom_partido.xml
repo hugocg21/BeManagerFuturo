@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardViewPartido"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:background="@color/morado"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutPartido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:background="@color/morado"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutPartido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <ImageView
+                android:id="@+id/imageViewPartido"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:src="@drawable/icono_partidos" />
+
+            <LinearLayout
+                android:id="@+id/linearLayoutInfoPartido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@id/imageViewPartido"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewRivalPartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:text="Rival"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewSedePartido"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sede"
+                    android:textSize="18sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewFechaPartido"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fecha"
+                        android:textSize="20sp"
+                        android:layout_marginEnd="6dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewHoraPartido"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Hora"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewLocalVisitantePartido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="6dp"
+                android:text="Local/Visitante"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+

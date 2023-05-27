@@ -34,7 +34,7 @@
                 android:padding="24dp">
 
                 <TextView
-                    android:id="@+id/textViewIniciarSesion"
+                    android:id="@+id/textViewIniciarSesionLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -65,7 +65,7 @@
                     android:textColorHint="@color/azul"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewIniciarSesion"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewIniciarSesionLogin"
                     tools:ignore="MissingConstraints,TextFields,TouchTargetSizeCheck" />
 
                 <EditText
@@ -155,7 +155,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
                 <TextView
-                    android:id="@+id/textViewPasswordOlvidada"
+                    android:id="@+id/textViewPasswordOlvidadaLogin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
@@ -169,38 +169,38 @@
                     app:layout_constraintTop_toBottomOf="@+id/buttonCrearCuentaLogin" />
 
                 <ImageButton
-                    android:id="@+id/imageButtonFacebook"
+                    android:id="@+id/imageButtonFacebookLogin"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
                     android:background="@drawable/custom_button_social"
-                    app:layout_constraintEnd_toStartOf="@+id/imageButtonGoogle"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewPasswordOlvidada"
+                    app:layout_constraintEnd_toStartOf="@+id/imageButtonGoogleLogin"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewPasswordOlvidadaLogin"
                     app:srcCompat="@drawable/icono_facebook"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
                 <ImageButton
-                    android:id="@+id/imageButtonGoogle"
+                    android:id="@+id/imageButtonGoogleLogin"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/custom_button_social"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewPasswordOlvidada"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewPasswordOlvidadaLogin"
                     app:srcCompat="@drawable/icono_google"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
                 <ImageButton
-                    android:id="@+id/imageButtonTwitter"
+                    android:id="@+id/imageButtonTwitterLogin"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:background="@drawable/custom_button_social"
-                    app:layout_constraintStart_toEndOf="@+id/imageButtonGoogle"
-                    app:layout_constraintTop_toBottomOf="@+id/textViewPasswordOlvidada"
+                    app:layout_constraintStart_toEndOf="@+id/imageButtonGoogleLogin"
+                    app:layout_constraintTop_toBottomOf="@+id/textViewPasswordOlvidadaLogin"
                     app:srcCompat="@drawable/icono_twitter"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
             </androidx.constraintlayout.widget.ConstraintLayout>

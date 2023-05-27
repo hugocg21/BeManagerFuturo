@@ -7,11 +7,32 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label=""
+        android:roundIcon="@mipmap/ic_launcher_foreground"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".Menus.Entrenamientos.NuevoEntrenamiento"
+            android:exported="false"
+            android:label="Nuevo entrenamiento"
+            android:parentActivityName=".Menus.EquipoDashboard"
+            android:theme="@style/MiActionBar" />
+        <activity
+            android:name=".Menus.Partidos.NuevoPartido"
+            android:exported="false"
+            android:label="Nuevo partido"
+            android:parentActivityName=".Menus.EquipoDashboard"
+            android:theme="@style/MiActionBar" />
+        <activity
+            android:name=".Menus.Jugadores.NuevoJugador"
+            android:exported="false"
+            android:label="Nuevo jugador"
+            android:parentActivityName=".Menus.EquipoDashboard"
+            android:theme="@style/MiActionBar" />
+        <activity
+            android:name=".GridLayout"
+            android:exported="false" />
         <activity
             android:name=".Menus.EquipoDashboard"
             android:exported="false"
