@@ -1,56 +1,56 @@
 package com.hugocg21.bemanager.Clases;
 
 public class Partido {
-    String dia, horaInic, local_visitante, pabellon, rival;
+    String rivalPartido, rolPartido, sedePartido, fechaPartido, horaPartido;
 
-    public Partido(String dia, String horaInic, String local_visitante, String pabellon, String rival) {
-        this.dia = dia;
-        this.horaInic = horaInic;
-        this.local_visitante = local_visitante;
-        this.pabellon = pabellon;
-        this.rival = rival;
+    public Partido(String rivalPartido, String rolPartido, String sedePartido, String fechaPartido, String horaPartido) {
+        this.rivalPartido = rivalPartido;
+        this.rolPartido = rolPartido;
+        this.sedePartido = sedePartido;
+        this.fechaPartido = fechaPartido;
+        this.horaPartido = horaPartido;
     }
 
     public Partido() {
     }
 
-    public String getDia() {
-        return dia;
+    public String getRivalPartido() {
+        return rivalPartido;
     }
 
-    public void setDia(String dia) {
-        this.dia = dia;
+    public void setRivalPartido(String rivalPartido) {
+        this.rivalPartido = rivalPartido;
     }
 
-    public String getHoraInic() {
-        return horaInic;
+    public String getRolPartido() {
+        return rolPartido;
     }
 
-    public void setHoraInic(String horaInic) {
-        this.horaInic = horaInic;
+    public void setRolPartido(String rolPartido) {
+        this.rolPartido = rolPartido;
     }
 
-    public String getLocal_visitante() {
-        return local_visitante;
+    public String getSedePartido() {
+        return sedePartido;
     }
 
-    public void setLocal_visitante(String local_visitante) {
-        this.local_visitante = local_visitante;
+    public void setSedePartido(String sedePartido) {
+        this.sedePartido = sedePartido;
     }
 
-    public String getPabellon() {
-        return pabellon;
+    public String getFechaPartido() {
+        return fechaPartido;
     }
 
-    public void setPabellon(String pabellon) {
-        this.pabellon = pabellon;
+    public void setFechaPartido(String fechaPartido) {
+        this.fechaPartido = fechaPartido;
     }
 
-    public String getRival() {
-        return rival;
+    public String getHoraPartido() {
+        return horaPartido;
     }
 
-    public void setRival(String rival) {
-        this.rival = rival;
+    public void setHoraPartido(String horaPartido) {
+        this.horaPartido = horaPartido;
     }
 }

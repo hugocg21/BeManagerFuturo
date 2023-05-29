@@ -22,11 +22,6 @@ public class AdaptadorJugadores extends FirestoreRecyclerAdapter<Jugador, Adapta
         this.listener = listener;
     }
 
-    @Override
-    protected void onBindViewHolder(@NonNull AdaptadorJugadores.ViewHolderJugadores holder, int position, @NonNull Jugador jugador) {
-        holder.bindData(jugador);
-    }
-
     @NonNull
     @Override
     public AdaptadorJugadores.ViewHolderJugadores onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,17 +29,22 @@ public class AdaptadorJugadores extends FirestoreRecyclerAdapter<Jugador, Adapta
         return new AdaptadorJugadores.ViewHolderJugadores(view, listener);
     }
 
+    @Override
+    protected void onBindViewHolder(@NonNull AdaptadorJugadores.ViewHolderJugadores holder, int position, @NonNull Jugador jugador) {
+        holder.bindData(jugador);
+    }
+
     public class ViewHolderJugadores extends RecyclerView.ViewHolder {
-        TextView tv_dorsalJugador, tv_nombreJugador, tv_apellidosJugador, tv_equipoJugador, tv_posicionJugador;
+        TextView textView_dorsalJugador, textView_nombreJugador, textView_apellidosJugador, textView_equipoJugador, textView_posicionJugador;
 
         public ViewHolderJugadores(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
-            tv_dorsalJugador = itemView.findViewById(R.id.textViewDorsalJugador);
-            tv_nombreJugador = itemView.findViewById(R.id.textViewNombreJugador);
-            tv_apellidosJugador = itemView.findViewById(R.id.textViewApellidosJugador);
-            tv_equipoJugador = itemView.findViewById(R.id.textViewEquipoJugador);
-            tv_posicionJugador = itemView.findViewById(R.id.textViewPosicionJugador);
+            textView_nombreJugador = itemView.findViewById(R.id.textViewNombreJugador);
+            textView_apellidosJugador = itemView.findViewById(R.id.textViewApellidosJugador);
+            textView_equipoJugador = itemView.findViewById(R.id.textViewEquipoJugador);
+            textView_posicionJugador = itemView.findViewById(R.id.textViewPosicionJugador);
+            textView_dorsalJugador = itemView.findViewById(R.id.textViewDorsalJugador);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -57,12 +57,12 @@ public class AdaptadorJugadores extends FirestoreRecyclerAdapter<Jugador, Adapta
             });
         }
 
-        public void bindData(Jugador jugador){
-            tv_nombreJugador.setText(jugador.getNombreJugador());
-            tv_apellidosJugador.setText(jugador.getApellidosJugador());
-            tv_equipoJugador.setText(jugador.getEquipoJugador());
-            tv_posicionJugador.setText(jugador.getPosicionJugador());
-            tv_dorsalJugador.setText(jugador.getDorsalJugador());
+        public void bindData(Jugador jugador) {
+            textView_nombreJugador.setText(jugador.getNombreJugador());
+            textView_apellidosJugador.setText(jugador.getApellidosJugador());
+            textView_equipoJugador.setText(jugador.getEquipoJugador());
+            textView_posicionJugador.setText(jugador.getPosicionJugador());
+            textView_dorsalJugador.setText(jugador.getDorsalJugador());
         }
     }
 

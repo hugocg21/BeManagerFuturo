@@ -37,18 +37,18 @@ public class AdaptadorPartidos extends FirestoreRecyclerAdapter<Partido, Adaptad
     }
 
     public class ViewHolderPartidos extends RecyclerView.ViewHolder {
-        ImageView imgv_imagen;
-        TextView tv_rivalPartido, tv_sedePartido, tv_fechaPartido, tv_horaPartido, tv_localVisitantePartido;
+        ImageView imageView_imagen, imageView_resultado;
+        TextView textView_rivalPartido, textView_sedePartido, textView_fechaPartido, textView_horaPartido;
 
         public ViewHolderPartidos(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
-            imgv_imagen = itemView.findViewById(R.id.imageViewPartido);
-            tv_rivalPartido = itemView.findViewById(R.id.textViewRivalPartido);
-            tv_sedePartido = itemView.findViewById(R.id.textViewSedePartido);
-            tv_fechaPartido = itemView.findViewById(R.id.textViewFechaPartido);
-            tv_horaPartido = itemView.findViewById(R.id.textViewHoraPartido);
-            tv_localVisitantePartido = itemView.findViewById(R.id.textViewLocalVisitantePartido);
+            imageView_imagen = itemView.findViewById(R.id.imageViewPartido);
+            textView_rivalPartido = itemView.findViewById(R.id.textViewRivalPartido);
+            textView_sedePartido = itemView.findViewById(R.id.textViewSedePartido);
+            textView_fechaPartido = itemView.findViewById(R.id.textViewFechaPartido);
+            textView_horaPartido = itemView.findViewById(R.id.textViewHoraPartido);
+            imageView_resultado = itemView.findViewById(R.id.imageViewResultado);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -62,11 +62,10 @@ public class AdaptadorPartidos extends FirestoreRecyclerAdapter<Partido, Adaptad
         }
 
         public void bindData(Partido partido){
-            tv_rivalPartido.setText(partido.getRival());
-            tv_sedePartido.setText(partido.getPabellon());
-            tv_fechaPartido.setText(partido.getDia());
-            tv_horaPartido.setText(partido.getHoraInic());
-            tv_localVisitantePartido.setText(partido.getLocal_visitante());
+            textView_rivalPartido.setText(partido.getRivalPartido());
+            textView_sedePartido.setText(partido.getSedePartido());
+            textView_fechaPartido.setText(partido.getFechaPartido());
+            textView_horaPartido.setText(partido.getHoraPartido());
         }
     }
 

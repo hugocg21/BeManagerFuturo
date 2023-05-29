@@ -67,7 +67,7 @@ public class NuevoJugador extends AppCompatActivity {
                 SharedPreferences sharedPreferences = getSharedPreferences("datos", MODE_PRIVATE);
                 String equipo = sharedPreferences.getString("nombreEquipo", null);
 
-                collectionReference_jugadores = collectionReference_equipos.document(equipo).collection("JugadoresEquipo");
+                collectionReference_jugadores = collectionReference_equipos.document(equipo).collection("Jugadores");
 
                 String nombreJugador = editText_nombreJugador.getText().toString().trim();
                 String apellidosJugador = editText_apellidosJugador.getText().toString().trim();

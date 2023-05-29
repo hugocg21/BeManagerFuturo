@@ -37,10 +37,6 @@ public class EquipoDashboard extends AppCompatActivity {
         //Bindeamos todos los datos y lo inflamos
         binding = ActivityEquipoDashboardBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        cambiarFragment(new JugadoresFragment());
-
-        //Bindeamos el BottomNavigationView
-        binding.bottomNavigationViewEquipoDasboard.setBackground(null);
 
         SharedPreferences sharedPreferences = getSharedPreferences("datos", MODE_PRIVATE);
         String equipo = sharedPreferences.getString("nombreEquipo", null);
@@ -48,6 +44,11 @@ public class EquipoDashboard extends AppCompatActivity {
         // Crea el Bundle con el nombre del equipo
         Bundle bundle = new Bundle();
         bundle.putString("nombreEquipo", equipo);
+
+        cambiarFragment(new JugadoresFragment());
+
+        //Bindeamos el BottomNavigationView
+        binding.bottomNavigationViewEquipoDasboard.setBackground(null);
 
         //Método para abrir cada Fragment dependiendo de que item del menú se clickee
         binding.bottomNavigationViewEquipoDasboard.setOnItemSelectedListener(item -> {

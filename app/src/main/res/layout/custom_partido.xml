@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
-    android:background="@color/morado"
+    android:background="@color/azul"
     app:cardCornerRadius="20dp"
     app:cardElevation="4dp"
     app:cardUseCompatPadding="true">
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:background="@color/morado"
+        android:background="@color/azul"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
                     android:text="Rival"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -60,7 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Sede"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textColor="@color/white"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -72,6 +73,7 @@
                         android:layout_height="wrap_content"
                         android:text="Fecha"
                         android:textSize="20sp"
+                        android:textColor="@color/white"
                         android:layout_marginEnd="6dp"
                         android:textStyle="bold" />
 
@@ -81,19 +83,20 @@
                         android:layout_height="match_parent"
                         android:text="Hora"
                         android:textSize="20sp"
+                        android:textColor="@color/white"
                         android:textStyle="bold" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textViewLocalVisitantePartido"
+            <ImageView
+                android:id="@+id/imageViewResultado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="6dp"
-                android:text="Local/Visitante"
+                android:src="@drawable/icono_victoria"
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>

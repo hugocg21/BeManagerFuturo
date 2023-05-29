@@ -1,6 +1,9 @@
 package com.hugocg21.bemanager.Menus.Jugadores;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +37,7 @@ public class JugadoresFragment extends Fragment {
     public JugadoresFragment() {
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,8 +53,8 @@ public class JugadoresFragment extends Fragment {
         usuarioLogueado = auth.getCurrentUser();
         String correo = Objects.requireNonNull(usuarioLogueado).getEmail();
 
-        Bundle bundle = getArguments();
-        String nombreEquipo = bundle.getString("nombreEquipo");
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("datos", Context.MODE_PRIVATE);
+        String nombreEquipo = sharedPreferences.getString("nombreEquipo", null);
 
         //Inicializamos las referencias a las colecciones
         collectionReference_usuario = database.collection("Usuarios");
@@ -64,9 +68,9 @@ public class JugadoresFragment extends Fragment {
         adaptadorJugadores = new AdaptadorJugadores(firestoreRecyclerOptions, new AdaptadorJugadores.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Jugador jugador = documentSnapshot.toObject(Jugador.class);
+                /*Jugador jugador = documentSnapshot.toObject(Jugador.class);
                 Intent i = new Intent(getContext(), Dashboard.class);
-                startActivity(i);
+                startActivity(i);*/
             }
         });
 
