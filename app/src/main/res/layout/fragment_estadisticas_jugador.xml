@@ -3,15 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Menus.Estadisticas.EstadisticasEquidoFragment">
+    tools:context=".Menus.Jugadores.EstadisticasJugadorFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textViewNombreJugadorEstadisticasJugador"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Estadísticas"
+        android:text="Estadísticas jugador"
         android:gravity="center"
-        android:textSize="40sp"
-        android:textColor="@color/azul" />
+        android:textSize="30sp"
+        android:textColor="@color/azul"
+        android:layout_margin="16dp"/>
 
 </FrameLayout>

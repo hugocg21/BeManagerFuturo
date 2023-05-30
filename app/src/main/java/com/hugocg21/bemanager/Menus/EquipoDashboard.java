@@ -20,7 +20,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hugocg21.bemanager.Menus.Entrenamientos.EntrenamientosFragment;
-import com.hugocg21.bemanager.Menus.Estadisticas.EstadisticasFragment;
+import com.hugocg21.bemanager.Menus.Estadisticas.EstadisticasEquidoFragment;
 import com.hugocg21.bemanager.Menus.Jugadores.JugadoresFragment;
 import com.hugocg21.bemanager.Menus.Jugadores.NuevoJugador;
 import com.hugocg21.bemanager.Menus.Partidos.PartidosFragment;
@@ -65,9 +65,9 @@ public class EquipoDashboard extends AppCompatActivity {
                 entrenamientosFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
                 cambiarFragment(entrenamientosFragment); //Cambiamos el Fragment al de la lista de entrenamientos
             } else if (item.getItemId() == R.id.bottomMenuEstadisticas) {
-                EstadisticasFragment estadisticasFragment = new EstadisticasFragment(); //Creamos un objeto de tipo EstadisticasFragment
-                estadisticasFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
-                cambiarFragment(estadisticasFragment); //Cambiamos el Fragment al de las estadísticas
+                EstadisticasEquidoFragment estadisticasEquidoFragment = new EstadisticasEquidoFragment(); //Creamos un objeto de tipo EstadisticasFragment
+                estadisticasEquidoFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
+                cambiarFragment(estadisticasEquidoFragment); //Cambiamos el Fragment al de las estadísticas
             }
             return true;
         });

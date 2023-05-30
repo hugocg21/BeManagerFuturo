@@ -3,6 +3,7 @@ package com.hugocg21.bemanager.Adaptadores;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -34,17 +35,33 @@ public class AdaptadorJugadores extends FirestoreRecyclerAdapter<Jugador, Adapta
         holder.bindData(jugador);
     }
 
+    public void actualizarOpciones(FirestoreRecyclerOptions<Jugador> firestoreRecyclerOptions) {
+        this.updateOptions(firestoreRecyclerOptions);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolderJugadores extends RecyclerView.ViewHolder {
-        TextView textView_dorsalJugador, textView_nombreJugador, textView_apellidosJugador, textView_equipoJugador, textView_posicionJugador;
+        ImageView imageView_eliminarJugador;
+        TextView textView_dorsalJugador, textView_nombreCompletoJugador, textView_equipoJugador, textView_posicionJugador;
 
         public ViewHolderJugadores(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
 
-            textView_nombreJugador = itemView.findViewById(R.id.textViewNombreJugador);
-            textView_apellidosJugador = itemView.findViewById(R.id.textViewApellidosJugador);
+            imageView_eliminarJugador = itemView.findViewById(R.id.imageViewEliminarJugador);
+            textView_nombreCompletoJugador = itemView.findViewById(R.id.textViewNombreApellidosJugador);
             textView_equipoJugador = itemView.findViewById(R.id.textViewEquipoJugador);
             textView_posicionJugador = itemView.findViewById(R.id.textViewPosicionJugador);
             textView_dorsalJugador = itemView.findViewById(R.id.textViewDorsalJugador);
+
+            imageView_eliminarJugador.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAbsoluteAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onDeleteClick(getSnapshots().getSnapshot(position), position);
+                    }
+                }
+            });
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -58,16 +75,19 @@ public class AdaptadorJugadores extends FirestoreRecyclerAdapter<Jugador, Adapta
         }
 
         public void bindData(Jugador jugador) {
-            textView_nombreJugador.setText(jugador.getNombreJugador());
-            textView_apellidosJugador.setText(jugador.getApellidosJugador());
+            textView_nombreCompletoJugador.setText(jugador.getNombreJugador() + " " + jugador.getApellidosJugador());
             textView_equipoJugador.setText(jugador.getEquipoJugador());
             textView_posicionJugador.setText(jugador.getPosicionJugador());
-            textView_dorsalJugador.setText(jugador.getDorsalJugador());
+
+            int dorsalJugador = jugador.getDorsalJugador();
+            textView_dorsalJugador.setText(String.valueOf(dorsalJugador));
         }
     }
 
     public interface OnItemClickListener {
         void onItemClick(DocumentSnapshot documentSnapshot, int position);
+
+        void onDeleteClick(DocumentSnapshot documentSnapshot, int position);
     }
 
 }

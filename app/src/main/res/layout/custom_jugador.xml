@@ -42,39 +42,25 @@
 
             <LinearLayout
                 android:id="@+id/linearLayoutInfoJugador"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="2dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="6dp"
+                android:layout_toStartOf="@+id/imageViewEliminarJugador"
                 android:layout_toEndOf="@+id/textViewDorsalJugador"
                 android:orientation="vertical">
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutNombreCompletoJugador"
+                <TextView
+                    android:id="@+id/textViewNombreApellidosJugador"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/textViewNombreJugador"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Nombre"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewApellidosJugador"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:text="Apellidos"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:text="Nombre"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textViewPosicionJugador"
@@ -93,6 +79,15 @@
                     android:textColor="@color/white"
                     android:textSize="18sp" />
             </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageViewEliminarJugador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="6dp"
+                android:src="@drawable/icono_eliminar" />
 
         </RelativeLayout>
 

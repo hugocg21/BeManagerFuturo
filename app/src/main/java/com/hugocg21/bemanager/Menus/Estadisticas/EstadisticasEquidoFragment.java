@@ -12,11 +12,11 @@ import com.hugocg21.bemanager.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link EstadisticasFragment#newInstance} factory method to
+ * Use the {@link EstadisticasEquidoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class EstadisticasFragment extends Fragment {
-    public EstadisticasFragment() {
+public class EstadisticasEquidoFragment extends Fragment {
+    public EstadisticasEquidoFragment() {
     }
 
     @Override

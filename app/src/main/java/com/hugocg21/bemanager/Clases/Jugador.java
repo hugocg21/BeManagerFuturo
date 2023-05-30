@@ -1,18 +1,19 @@
 package com.hugocg21.bemanager.Clases;
 
 public class Jugador {
-    String nombreJugador, apellidosJugador, equipoJugador, posicionJugador, dorsalJugador;
+    String nombreJugador, apellidosJugador, equipoJugador, posicionJugador;
+    int dorsalJugador, posicionJugadorNumero;
 
-    public Jugador(String nombreJugador, String apellidosJugador, String equipoJugador, String posicionJugador, String dorsalJugador) {
+    public Jugador(String nombreJugador, String apellidosJugador, String equipoJugador, String posicionJugador, int dorsalJugador, int posicionJugadorNumero) {
         this.nombreJugador = nombreJugador;
         this.apellidosJugador = apellidosJugador;
         this.equipoJugador = equipoJugador;
         this.posicionJugador = posicionJugador;
         this.dorsalJugador = dorsalJugador;
+        this.posicionJugadorNumero = posicionJugadorNumero;
     }
 
     public Jugador() {
-
     }
 
     public String getNombreJugador() {
@@ -47,11 +48,19 @@ public class Jugador {
         this.posicionJugador = posicionJugador;
     }
 
-    public String getDorsalJugador() {
+    public int getDorsalJugador() {
         return dorsalJugador;
     }
 
-    public void setDorsalJugador(String dorsalJugador) {
+    public void setDorsalJugador(int dorsalJugador) {
         this.dorsalJugador = dorsalJugador;
+    }
+
+    public int getPosicionJugadorNumero() {
+        return posicionJugadorNumero;
+    }
+
+    public void setPosicionJugadorNumero(int posicionJugadorNumero) {
+        this.posicionJugadorNumero = posicionJugadorNumero;
     }
 }

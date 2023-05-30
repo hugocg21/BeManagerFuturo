@@ -13,12 +13,16 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.hugocg21.bemanager.R;
 
 import java.util.ArrayList;
@@ -79,25 +83,63 @@ public class NuevoJugador extends AppCompatActivity {
 
                 String equipoJugador = spinner_equipoJugador.getSelectedItem().toString().trim();
                 String posicionJugador = spinner_posicionJugador.getSelectedItem().toString().trim();
-                String dorsalJugador = editText_dorsalJugador.getText().toString().trim();
+                int dorsalJugador = Integer.parseInt(editText_dorsalJugador.getText().toString().trim());
 
-                if (nombreJugador.isEmpty() || apellidosJugador.isEmpty() || equipoJugador.isEmpty() || posicionJugador.isEmpty() || dorsalJugador.isEmpty()) {
-                    Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
-                } else {
-                    crearJugador(nombreJugador, apellidosJugador, equipoJugador, posicionJugador, dorsalJugador);
-                    finish();
+                Query query = collectionReference_jugadores.whereEqualTo("dorsalJugador", dorsalJugador);
+
+                int posicionJugadorNumero = 0;
+
+                switch (posicionJugador) {
+                    case "Base":
+                        posicionJugadorNumero = 1;
+                        break;
+                    case "Escolta":
+                        posicionJugadorNumero = 2;
+                        break;
+                    case "Alero":
+                        posicionJugadorNumero = 3;
+                        break;
+                    case "Ala-pivot":
+                        posicionJugadorNumero = 4;
+                        break;
+                    case "Pivot":
+                        posicionJugadorNumero = 5;
+                        break;
                 }
+
+                int finalPosicionJugadorNumero = posicionJugadorNumero;
+                query.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            QuerySnapshot querySnapshot = task.getResult();
+                            if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                                Toast.makeText(getApplicationContext(), "El dorsal ya está en uso por otro jugador", Toast.LENGTH_SHORT).show();
+                            } else {
+                                if (nombreJugador.isEmpty() || apellidosJugador.isEmpty() || equipoJugador.isEmpty() || posicionJugador.isEmpty() || dorsalJugador == 0) {
+                                    Toast.makeText(getApplicationContext(), "Ingresar los datos", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    crearJugador(nombreJugador, apellidosJugador, equipoJugador, posicionJugador, dorsalJugador, finalPosicionJugadorNumero);
+                                    finish();
+                                }
+                            }
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Error al verificar el dorsal", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
         });
     }
 
-    private void crearJugador(String nombreJugador, String apellidosJugador, String equipoJugador, String posicionJugador, String dorsalJugador) {
+    private void crearJugador(String nombreJugador, String apellidosJugador, String equipoJugador, String posicionJugador, int dorsalJugador, int posicionJugadorNumero) {
         Map<String, Object> equipo = new HashMap<>();
         equipo.put("nombreJugador", nombreJugador);
         equipo.put("apellidosJugador", apellidosJugador);
         equipo.put("equipoJugador", equipoJugador);
         equipo.put("posicionJugador", posicionJugador);
         equipo.put("dorsalJugador", dorsalJugador);
+        equipo.put("posicionJugadorNumero", posicionJugadorNumero);
 
         collectionReference_jugadores.document(nombreJugador + " " + apellidosJugador).set(equipo).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
