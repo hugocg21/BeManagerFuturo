@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/bottomMenuJugadores"
+        android:id="@+id/bottomMenuJugadoresDashboardEquipo"
         android:title="Jugadores"
         android:icon="@drawable/icono_jugadores"/>
 
     <item
-        android:id="@+id/bottomMenuPartidos"
+        android:id="@+id/bottomMenuPartidosDashboardEquipo"
         android:title="Partidos"
         android:icon="@drawable/icono_partidos"
         />
@@ -17,11 +17,11 @@
         android:title=""/>
 
     <item
-        android:id="@+id/bottomMenuEntrenamientos"
+        android:id="@+id/bottomMenuEntrenamientosDashboardEquipo"
         android:title="Entrenamientos"
         android:icon="@drawable/icono_entrenamiento" />
     <item
-        android:id="@+id/bottomMenuEstadisticas"
+        android:id="@+id/bottomMenuEstadisticasDashboardEquipo"
         android:title="Estadísticas"
         android:icon="@drawable/icono_estadisticas" />
 

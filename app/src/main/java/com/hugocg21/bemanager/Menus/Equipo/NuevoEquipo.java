@@ -1,4 +1,4 @@
-package com.hugocg21.bemanager.Menus;
+package com.hugocg21.bemanager.Menus.Equipo;
 
 import android.content.Intent;
 import android.os.Bundle;

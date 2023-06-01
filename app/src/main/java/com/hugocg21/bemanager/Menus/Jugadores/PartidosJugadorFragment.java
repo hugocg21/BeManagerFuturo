@@ -10,18 +10,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hugocg21.bemanager.R;
-
-public class EstadisticasJugadorFragment extends Fragment {
-    public EstadisticasJugadorFragment() {
+public class PartidosJugadorFragment extends Fragment {
+    public PartidosJugadorFragment() {
+        // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_partidos_jugador, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_estadisticas_jugador, container, false);
-
-        TextView textView_nombreJugador = view.findViewById(R.id.textViewNombreJugadorEstadisticasJugador);
+        TextView textView_nombreJugador = view.findViewById(R.id.textViewNombrePartidos);
 
         textView_nombreJugador.setText("Pepito");
 

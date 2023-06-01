@@ -1,4 +1,4 @@
-package com.hugocg21.bemanager.Menus;
+package com.hugocg21.bemanager.Menus.Equipo;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -25,18 +25,18 @@ import com.hugocg21.bemanager.Menus.Jugadores.JugadoresFragment;
 import com.hugocg21.bemanager.Menus.Jugadores.NuevoJugador;
 import com.hugocg21.bemanager.Menus.Partidos.PartidosFragment;
 import com.hugocg21.bemanager.R;
-import com.hugocg21.bemanager.databinding.ActivityEquipoDashboardBinding;
+import com.hugocg21.bemanager.databinding.ActivityDashboardEquipoBinding;
 
-public class EquipoDashboard extends AppCompatActivity {
-    ActivityEquipoDashboardBinding binding; //Creamos una variable binding para poder bindear los datos
+public class DashboardEquipo extends AppCompatActivity {
+    ActivityDashboardEquipoBinding activityDashboardEquipoBinding; //Creamos una variable binding para poder bindear los datos
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //Bindeamos todos los datos y lo inflamos
-        binding = ActivityEquipoDashboardBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        activityDashboardEquipoBinding = ActivityDashboardEquipoBinding.inflate(getLayoutInflater());
+        setContentView(activityDashboardEquipoBinding.getRoot());
 
         SharedPreferences sharedPreferences = getSharedPreferences("datos", MODE_PRIVATE);
         String equipo = sharedPreferences.getString("nombreEquipo", null);
@@ -48,23 +48,23 @@ public class EquipoDashboard extends AppCompatActivity {
         cambiarFragment(new JugadoresFragment());
 
         //Bindeamos el BottomNavigationView
-        binding.bottomNavigationViewEquipoDasboard.setBackground(null);
+        activityDashboardEquipoBinding.bottomNavigationViewEquipoDasboard.setBackground(null);
 
         //Método para abrir cada Fragment dependiendo de que item del menú se clickee
-        binding.bottomNavigationViewEquipoDasboard.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.bottomMenuJugadores) {
+        activityDashboardEquipoBinding.bottomNavigationViewEquipoDasboard.setOnItemSelectedListener(item -> {
+            if (item.getItemId() == R.id.bottomMenuJugadoresDashboardEquipo) {
                 JugadoresFragment jugadoresFragment = new JugadoresFragment(); //Creamos un objeto de tipo JugadoresFragment
                 jugadoresFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
                 cambiarFragment(jugadoresFragment); //Cambiamos el Fragment al de la lista de jugadores
-            } else if (item.getItemId() == R.id.bottomMenuPartidos) {
+            } else if (item.getItemId() == R.id.bottomMenuPartidosDashboardEquipo) {
                 PartidosFragment partidosFragment = new PartidosFragment(); //Creamos un objeto de tipo PartidosFragment
                 partidosFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
                 cambiarFragment(partidosFragment); //Cambiamos el Fragment al de la lista de partidos
-            } else if (item.getItemId() == R.id.bottomMenuEntrenamientos) {
+            } else if (item.getItemId() == R.id.bottomMenuEntrenamientosDashboardEquipo) {
                 EntrenamientosFragment entrenamientosFragment = new EntrenamientosFragment(); //Creamos un objeto de tipo EntrenamientosFragment
                 entrenamientosFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
                 cambiarFragment(entrenamientosFragment); //Cambiamos el Fragment al de la lista de entrenamientos
-            } else if (item.getItemId() == R.id.bottomMenuEstadisticas) {
+            } else if (item.getItemId() == R.id.bottomMenuEstadisticasDashboardEquipo) {
                 EstadisticasEquidoFragment estadisticasEquidoFragment = new EstadisticasEquidoFragment(); //Creamos un objeto de tipo EstadisticasFragment
                 estadisticasEquidoFragment.setArguments(bundle); //Guardamos el bundle con el nombre del equipo
                 cambiarFragment(estadisticasEquidoFragment); //Cambiamos el Fragment al de las estadísticas
@@ -73,7 +73,7 @@ public class EquipoDashboard extends AppCompatActivity {
         });
 
         //Método al hacer click en el Button de añadir del BottomNavigationView
-        binding.floatingActionButtonDesplegableEquipoDashboard.setOnClickListener(new View.OnClickListener() {
+        activityDashboardEquipoBinding.floatingActionButtonDesplegableEquipoDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 showBottomDialog(); //Llamammos al método para mostrar el Dialog desplegable inferior

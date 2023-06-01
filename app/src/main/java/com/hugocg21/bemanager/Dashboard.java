@@ -36,8 +36,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.hugocg21.bemanager.Adaptadores.AdaptadorEquipos;
 import com.hugocg21.bemanager.Clases.Equipo;
 import com.hugocg21.bemanager.Login.Login;
-import com.hugocg21.bemanager.Menus.EquipoDashboard;
-import com.hugocg21.bemanager.Menus.NuevoEquipo;
+import com.hugocg21.bemanager.Menus.Equipo.DashboardEquipo;
+import com.hugocg21.bemanager.Menus.Equipo.NuevoEquipo;
+import com.hugocg21.bemanager.Menus.Jugadores.DashboardJugador;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,7 +126,7 @@ public class Dashboard extends AppCompatActivity {
                 editor.apply();
 
                 // Crea el Intent para iniciar el siguiente Activity
-                startActivity(new Intent(getApplicationContext(), EquipoDashboard.class));
+                startActivity(new Intent(getApplicationContext(), DashboardEquipo.class));
             }
         });
 

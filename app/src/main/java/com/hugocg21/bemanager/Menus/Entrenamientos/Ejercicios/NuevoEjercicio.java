@@ -1,4 +1,4 @@
-package com.hugocg21.bemanager.Menus.Ejercicios;
+package com.hugocg21.bemanager.Menus.Entrenamientos.Ejercicios;
 
 import androidx.appcompat.app.AppCompatActivity;
 

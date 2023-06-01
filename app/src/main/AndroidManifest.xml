@@ -13,31 +13,46 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Menus.Ejercicios.NuevoEjercicio"
-            android:exported="false" />
+            android:name=".Menus.Entrenamientos.DashboardEntrenamientos"
+            android:exported="false"
+            android:label="Entrenamientos"
+            android:parentActivityName=".Menus.Equipo.DashboardEquipo"
+            android:theme="@style/MiActionBar" />
+        <activity
+            android:name=".Menus.Jugadores.DashboardJugador"
+            android:exported="false"
+            android:label="Jugador"
+            android:parentActivityName=".Menus.Equipo.DashboardEquipo"
+            android:theme="@style/MiActionBar" />
+        <activity
+            android:name=".Menus.Entrenamientos.Ejercicios.NuevoEjercicio"
+            android:exported="false"
+            android:label="Nuevo ejercicio"
+            android:parentActivityName=".Menus.Equipo.DashboardEquipo"
+            android:theme="@style/MiActionBar" />
         <activity
             android:name=".Menus.Entrenamientos.NuevoEntrenamiento"
             android:exported="false"
             android:label="Nuevo entrenamiento"
-            android:parentActivityName=".Menus.EquipoDashboard"
+            android:parentActivityName=".Menus.Equipo.DashboardEquipo"
             android:theme="@style/MiActionBar" />
         <activity
             android:name=".Menus.Partidos.NuevoPartido"
             android:exported="false"
             android:label="Nuevo partido"
-            android:parentActivityName=".Menus.EquipoDashboard"
+            android:parentActivityName=".Menus.Equipo.DashboardEquipo"
             android:theme="@style/MiActionBar" />
         <activity
             android:name=".Menus.Jugadores.NuevoJugador"
             android:exported="false"
             android:label="Nuevo jugador"
-            android:parentActivityName=".Menus.EquipoDashboard"
+            android:parentActivityName=".Menus.Equipo.DashboardEquipo"
             android:theme="@style/MiActionBar" />
         <activity
             android:name=".GridLayout"
             android:exported="false" />
         <activity
-            android:name=".Menus.EquipoDashboard"
+            android:name=".Menus.Equipo.DashboardEquipo"
             android:exported="false"
             android:label="Equipo"
             android:parentActivityName=".Dashboard"
@@ -64,7 +79,7 @@
             android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Menus.NuevoEquipo"
+            android:name=".Menus.Equipo.NuevoEquipo"
             android:exported="false"
             android:label="Nuevo Equipo"
             android:parentActivityName=".Dashboard"

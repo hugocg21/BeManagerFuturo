@@ -3,6 +3,7 @@ package com.hugocg21.bemanager.Menus.Jugadores;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -84,19 +85,14 @@ public class JugadoresFragment extends Fragment {
         adaptadorJugadores = new AdaptadorJugadores(firestoreRecyclerOptions, new AdaptadorJugadores.OnItemClickListener() {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
-                Jugador jugador = documentSnapshot.toObject(Jugador.class);
+                Jugador jugador = documentSnapshot.toObject(Jugador.class); // Corrección: utiliza toObject() para obtener el objeto Jugador
+                String nombreJugador = jugador.getNombreJugador() + " " + jugador.getApellidosJugador(); // Obtén el nombre del jugador
 
-                Fragment estadisticasJugador = new EstadisticasJugadorFragment();
+                SharedPreferences.Editor editor = getContext().getSharedPreferences("jugador", Context.MODE_PRIVATE).edit();
+                editor.putString("nombreJugador", nombreJugador);
+                editor.apply();
 
-                Bundle bundle = new Bundle();
-                bundle.putString("nombreJugador", jugador.getNombreJugador());
-
-                estadisticasJugador.setArguments(bundle);
-
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frameLayoutEquipoDashboard, estadisticasJugador);
-                fragmentTransaction.commit();
+                startActivity(new Intent(getContext(), DashboardJugador.class));
             }
 
             public void onDeleteClick(DocumentSnapshot documentSnapshot, int position) {
