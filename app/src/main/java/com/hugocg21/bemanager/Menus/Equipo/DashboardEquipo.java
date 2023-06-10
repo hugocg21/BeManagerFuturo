@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -20,9 +19,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.hugocg21.bemanager.Menus.Entrenamientos.EntrenamientosFragment;
+import com.hugocg21.bemanager.Menus.Entrenamientos.NuevoEntrenamiento;
 import com.hugocg21.bemanager.Menus.Estadisticas.EstadisticasEquidoFragment;
-import com.hugocg21.bemanager.Menus.Jugadores.JugadoresFragment;
 import com.hugocg21.bemanager.Menus.Jugadores.NuevoJugador;
+import com.hugocg21.bemanager.Menus.Partidos.NuevoPartido;
 import com.hugocg21.bemanager.Menus.Partidos.PartidosFragment;
 import com.hugocg21.bemanager.R;
 import com.hugocg21.bemanager.databinding.ActivityDashboardEquipoBinding;
@@ -116,10 +116,8 @@ public class DashboardEquipo extends AppCompatActivity {
         nuevoPartido.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getApplicationContext(), NuevoPartido.class));
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Create a short is Clicked", Toast.LENGTH_SHORT).show();
-
             }
         });
 
@@ -127,10 +125,8 @@ public class DashboardEquipo extends AppCompatActivity {
         nuevoEntrenamiento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getApplicationContext(), NuevoEntrenamiento.class));
                 dialog.dismiss();
-                Toast.makeText(getApplicationContext(), "Go live is Clicked", Toast.LENGTH_SHORT).show();
-
             }
         });
 

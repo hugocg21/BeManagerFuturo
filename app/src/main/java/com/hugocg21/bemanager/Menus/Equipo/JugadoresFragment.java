@@ -1,4 +1,4 @@
-package com.hugocg21.bemanager.Menus.Jugadores;
+package com.hugocg21.bemanager.Menus.Equipo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -32,6 +32,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.hugocg21.bemanager.Adaptadores.AdaptadorJugadores;
 import com.hugocg21.bemanager.Clases.Jugador;
+import com.hugocg21.bemanager.Menus.Jugadores.DashboardJugador;
 import com.hugocg21.bemanager.R;
 
 import java.util.Objects;

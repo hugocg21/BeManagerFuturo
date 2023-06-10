@@ -24,9 +24,9 @@ public class PerfilJugadorFragment extends Fragment {
 
         textView_nombreJugador = view.findViewById(R.id.textViewNombrePerfilJugador);
         textView_posicionJugador = view.findViewById(R.id.textViewPosicionPerfilJugador);
-        textView_puntosJugador = view.findViewById(R.id.textViewPuntosMediaPerfilJugador);
-        textView_rebotesJugador = view.findViewById(R.id.textViewRebotesMediaPerfilJugador);
-        textView_asistenciasJugador = view.findViewById(R.id.textViewAsistenciasMediaPerfilJugador);
+        textView_puntosJugador = view.findViewById(R.id.textViewPuntosMetidosEstadisticasJugador);
+        textView_rebotesJugador = view.findViewById(R.id.textViewRebotesCogidosEstadisticasJugador);
+        textView_asistenciasJugador = view.findViewById(R.id.textViewAsistenciasEstadisticasJugador);
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("jugador", Context.MODE_PRIVATE);
         String nombreJugador = sharedPreferences.getString("nombreJugador", null);

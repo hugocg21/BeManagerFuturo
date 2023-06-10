@@ -37,83 +37,395 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:text="Estadísticas Medias"
         android:textSize="18sp"
         android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/textViewPuntosPartidoPerfilJugador"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/textViewPuntosEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Puntos por partido"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:text="Puntos" />
 
         <TextView
-            android:id="@+id/textViewPuntosMediaPerfilJugador"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/textViewTriplesEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="end"
-            android:text="10.5"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:text="Triples metidos" />
 
+        <TextView
+            android:id="@+id/textViewMediaDistanciaEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Media distancia metidos" />
+
+        <TextView
+            android:id="@+id/textViewTirosLibresEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Tiros libres metidos" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewPuntosMetidosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewTriplesMetidosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewMediaDistanciaMetidosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewTirosLibresMetidosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginTop="6dp">
 
         <TextView
-            android:id="@+id/textViewRebotesPartidoPerfilJugador"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/textViewTriplesFalladosEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Rebotes por partido"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:text="Triples fallados" />
 
         <TextView
-            android:id="@+id/textViewRebotesMediaPerfilJugador"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/textViewMediaDistanciaFalladosEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="end"
-            android:text="5.2"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:text="Media distancia fallados" />
 
+        <TextView
+            android:id="@+id/textViewTirosLibresFalladosEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Tiros libres fallados" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewTriplesFalladosNumEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewMediaDistanciaFalladosNumEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewTirosLibresFalladosNumEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+
+        android:layout_marginTop="6dp">
 
         <TextView
-            android:id="@+id/textViewAsistenciasPartidoPerfilJugador"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/textViewPorcentajeTriplesEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Asistencias por partido"
-            android:textSize="16sp" />
+            android:gravity="center"
+            android:text="Porcentaje triples" />
 
         <TextView
-            android:id="@+id/textViewAsistenciasMediaPerfilJugador"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:id="@+id/textViewPorcentajeMediaDistanciaEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="end"
-            android:text="8.7"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:gravity="center"
+            android:text="Porcentaje media distancia" />
 
+        <TextView
+            android:id="@+id/textViewPorcentajeTirosLibresEstadisticasJugador"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Porcentaje tiros libres" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewPorcentajeTriplesNumEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0%" />
+
+        <TextView
+            android:id="@+id/textViewPorcentajeMediaDistanciaNumEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0%" />
+
+        <TextView
+            android:id="@+id/textViewPorcentajeTirosLibresNumEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0%" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/textViewRebotesEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Rebotes" />
+
+        <TextView
+            android:id="@+id/textViewRebotesOfensivosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Ofensivos" />
+
+        <TextView
+            android:id="@+id/textViewRebotesDefensivosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Defensivos" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewRebotesCogidosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewRebotesOfensivosCogidosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewRebotesDefensivosCogidosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/textViewAsistenciasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Asistencias" />
+
+        <TextView
+            android:id="@+id/textViewRobosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Robos" />
+
+        <TextView
+            android:id="@+id/textViewTaponesEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Tapones" />
+
+        <TextView
+            android:id="@+id/textViewPerdidasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Pérdidas" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewAsisteciasDadasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewRobosRealizadosEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewTaponesRealizados"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewPerdidasCometidasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <TextView
+            android:id="@+id/textViewFaltasRecibidasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Faltas recibidas" />
+
+        <TextView
+            android:id="@+id/textViewFaltasCometidasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Faltas cometidas" />
+
+        <TextView
+            android:id="@+id/textViewValoracionEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Valoración" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textViewFaltasRecibidasConseguidasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewFaltasCometidasRealizadasEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
+
+        <TextView
+            android:id="@+id/textViewValoracionConseguidaEstadisticasJugador"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0" />
     </LinearLayout>
 
 </LinearLayout>

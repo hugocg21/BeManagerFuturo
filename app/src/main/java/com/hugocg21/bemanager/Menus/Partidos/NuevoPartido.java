@@ -3,12 +3,17 @@ package com.hugocg21.bemanager.Menus.Partidos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,6 +24,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hugocg21.bemanager.R;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -81,8 +87,8 @@ public class NuevoPartido extends AppCompatActivity {
                 }
 
                 String sedePartido = editText_sede.getText().toString().trim();
-                String fechaPartido = editText_fechaPartido.getText().toString().trim();
-                String horaPartido = editText_horaPartido.getText().toString().trim();
+                String fechaPartido = editText_fechaPartido.getText().toString();
+                String horaPartido = editText_horaPartido.getText().toString();
 
                 if (rivalPartido.isEmpty() || rolPartido.length() == 0 || sedePartido.isEmpty() || fechaPartido.isEmpty() || horaPartido.isEmpty()){
                     Toast.makeText(getApplicationContext(), "Todos los campos deben estar completos", Toast.LENGTH_SHORT).show();
@@ -94,6 +100,41 @@ public class NuevoPartido extends AppCompatActivity {
         });
     }
 
+    public void abrirCalendarioFecha(View view){
+        Calendar calendarioFecha = Calendar.getInstance();
+        int anio = calendarioFecha.get(Calendar.YEAR);
+        int mes = calendarioFecha.get(Calendar.MONTH);
+        int dia = calendarioFecha.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(NuevoPartido.this,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int anioSeleccionado, int mesSeleccionado, int diaSeleccionado) {
+                        String fechaSeleccionada = diaSeleccionado + "/" + mesSeleccionado + "/" + anioSeleccionado;
+                        editText_fechaPartido.setText(fechaSeleccionada);
+                    }
+                }, anio, mes, dia);
+
+        datePickerDialog.show();
+    }
+
+    public void abrirCalendarioHora(View view){
+        Calendar calendarioHora = Calendar.getInstance();
+        int hora = calendarioHora.get(Calendar.HOUR_OF_DAY);
+        int min = calendarioHora.get(Calendar.MINUTE);
+
+        TimePickerDialog timePickerDialog = new TimePickerDialog(NuevoPartido.this,
+                new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int horaSeleccionada, int minutoSeleccionado) {
+                        String horaFechaSeleccionada = horaSeleccionada + ":" + minutoSeleccionado;
+                        editText_horaPartido.setText(horaFechaSeleccionada);
+                    }
+                }, hora, min, true);
+
+        timePickerDialog.show();
+    }
+
     private void crearPartido(String rivalPartido, String rolPartido, String sedePartido, String fechaPartido, String horaPartido) {
         Map<String, Object> partido = new HashMap<>();
         partido.put("rivalPartido", rivalPartido);
@@ -102,10 +143,10 @@ public class NuevoPartido extends AppCompatActivity {
         partido.put("fechaPartido", fechaPartido);
         partido.put("horaPartido", horaPartido);
 
-        collectionReference_partidos.document(rivalPartido + " " + fechaPartido).set(partido).addOnSuccessListener(new OnSuccessListener<Void>() {
+        collectionReference_partidos.document(rivalPartido).set(partido).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(getApplicationContext(), "Partido añadido correctamente", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getApplicationContext(), PizarraPartido.class));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
